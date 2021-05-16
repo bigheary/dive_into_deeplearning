@@ -7,3 +7,6 @@
 1. 通过一个RNN一个单元的input-output说明BP
    结构图：
    ![一个RNN单元示例](https://github.com/bigheary/dive_into_deeplearning/blob/main/RNN_cell.jpeg)
+   推导结果：
+   ![loss关于参数的导数推导](https://github.com/bigheary/dive_into_deeplearning/blob/main/RNNCell_Jw1w2.jpeg)
+   
