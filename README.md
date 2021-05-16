@@ -10,3 +10,8 @@
    推导结果：
    ![loss关于参数的导数推导](https://github.com/bigheary/dive_into_deeplearning/blob/main/RNNCell_Jw1w2.jpeg)
    
+   以上， L关于O的导数，跟具体的loss function定义有关，下面以最常用的softmax + 交叉熵loss（CE loss）为例，来进行说明
+   对O进行softmax变换之后，再计算CE loss
+   ![softmax+celoss](https://github.com/bigheary/dive_into_deeplearning/blob/main/softmax%2Bceloss.jpeg)
+   另外，可参考一种更加统一性的公式（来自网络）
+    ![softmax+celoss_normed](https://github.com/bigheary/dive_into_deeplearning/blob/main/softmax%2Bceloss_norm.png)
