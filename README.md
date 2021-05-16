@@ -15,3 +15,15 @@
    ![softmax+celoss](https://github.com/bigheary/dive_into_deeplearning/blob/main/softmax%2Bceloss.jpeg)
    另外，可参考一种更加统一性的公式（来自网络）
     ![softmax+celoss_normed](https://github.com/bigheary/dive_into_deeplearning/blob/main/softmax%2Bceloss_norm.png)
+
+2. BPTT原理说明
+   即将RNN的计算图按照时间步展开，来计loss对各参数的梯度（因为参数对各个时间步是共享的）
+   结构图：
+   ![BPTT示例](https://github.com/bigheary/dive_into_deeplearning/blob/main/BPTT.jpeg)
+   
+   改图中有个地方值得商榷，即是否将总得loss拆分到具体每个时间步的loss。图中拆分到每个时间步下，导致后续的推导有问题（貌似是不能这拆分的，具体原因未知，可能前后有关联）
+   ![BPTT-导数示例](https://github.com/bigheary/dive_into_deeplearning/blob/main/BPTT_daoshu.jpeg)
+   ![BPTT-导数示例1](https://github.com/bigheary/dive_into_deeplearning/blob/main/BPTT_daoshu1.jpeg)
+   ![BPTT-导数示例2](https://github.com/bigheary/dive_into_deeplearning/blob/main/BPTT_daoshu2.jpeg)
+   
+   总结，通过BPTT导数推导，可以认识到经典RNN架构容易出现梯度爆炸、梯度消失的原因，即BPTT-导数示例2中得到的递推公示所示，由于时间步的状态转移复用了变换矩阵Whh，在递推公示中体现为Whh的次幂形式，在时间步T较大时，越靠前的时间步的倒数计算会出现数值问题（爆炸or消失），体现在模型效果上就是无法距离较远的时间步的相互影响无法顺畅地流通。
